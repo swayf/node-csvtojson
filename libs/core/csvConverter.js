@@ -54,8 +54,12 @@ function csvAdv(params){
                 }
             }else{
                 if (ele.indexOf(quote)===0){
-                    inquote=true;
-                    quoteBuff+=ele.substr(1,ele.length-1);
+                    if (ele.lastIndexOf(quote)===(ele.length - 1)){
+                        row.push(ele.substr(1,ele.length-2));
+                    }else{
+                        inquote=true;
+                        quoteBuff+=ele.substr(1,ele.length-1);
+                    }
                 }else{
                     row.push(ele);
                 }
